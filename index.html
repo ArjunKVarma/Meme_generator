@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Memes</title>
+    <link rel="icon" type="image/x-icon" href="_1806028d-ca9f-4b75-aade-9915e3b09177.jpeg">
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            var items = Array("funny","memes","dankmemes","wholesomememes","okbuddyretard","comedymemes",);
+
+            var item = items[Math.floor(Math.random()*items.length)]
+            fetch(`https://meme-api.com/gimme/${item}`).then(response =>{
+                return response.json().then(data =>{
+                    console.log(data)
+                    meme = document.querySelector("#img")
+                    meme.src = `${data.preview[3]}`
+                    
+                }
+                )
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        div{
+            width: 100vw;
+            height: 100vh;
+        }
+        #img{
+            display: block;
+  max-width:100%;
+  margin: auto;
+  max-height:90%;
+  width: 90%;
+  object-fit: contain;
+  height: auto;
+        }
+    </style>
+    
+  <div >
+    <img src="" alt="Meme" id="img" width="100vw" height="100vh" >
+  </div>
+</body>
+</html>
